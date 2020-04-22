@@ -22,6 +22,7 @@ import java.util.Date;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @EqualsAndHashCode(of = "id")
+@Table(name="users")
 public class User {
 
     @Id
