@@ -2,7 +2,6 @@ package br.codenation.projectfinal.dto;
 
 import br.codenation.projectfinal.model.Evento;
 import br.codenation.projectfinal.util.FormatAndConvertDateToString;
-import br.codenation.projectfinal.util.Level;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class EventoDTO{
 
     private Long id;
     private String descricao;
-    private Level level;
+    private String level;
     private String origem;
     private String dataDeCriacao;
 
@@ -50,11 +49,11 @@ public class EventoDTO{
         this.descricao = descricao;
     }
 
-    public Level getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

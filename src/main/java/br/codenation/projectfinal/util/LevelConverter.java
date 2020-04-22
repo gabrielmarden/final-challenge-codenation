@@ -4,7 +4,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import java.util.stream.Stream;
 
-@Converter(autoApply = true)
+//@Converter(autoApply = true)
 public class LevelConverter implements AttributeConverter<Level,String> {
     @Override
     public String convertToDatabaseColumn(Level level) {

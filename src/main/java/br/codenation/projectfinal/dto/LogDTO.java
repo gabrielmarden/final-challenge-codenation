@@ -1,12 +1,11 @@
 package br.codenation.projectfinal.dto;
 
 import br.codenation.projectfinal.model.Evento;
-import br.codenation.projectfinal.util.Level;
 
 public class LogDTO {
 
     private String log;
-    private Level level;
+    private String level;
 
     public LogDTO(Evento evento){
         this.log = evento.getLogDeEvento();
@@ -21,11 +20,11 @@ public class LogDTO {
         this.log = log;
     }
 
-    public Level getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 }

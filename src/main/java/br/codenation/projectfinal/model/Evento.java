@@ -1,7 +1,5 @@
 package br.codenation.projectfinal.model;
 
-import br.codenation.projectfinal.util.Level;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,6 +36,6 @@ public class Evento {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    private Level level;
+    private String level;
 
 }
