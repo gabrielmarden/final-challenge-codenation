@@ -52,6 +52,7 @@ public class User {
 
     @Column(name="created_at")
     @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
 }
