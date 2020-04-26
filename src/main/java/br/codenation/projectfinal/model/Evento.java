@@ -1,5 +1,6 @@
 package br.codenation.projectfinal.model;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

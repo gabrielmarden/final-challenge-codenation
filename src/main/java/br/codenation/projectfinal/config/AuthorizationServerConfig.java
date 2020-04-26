@@ -29,7 +29,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory()
                 .withClient("client-codenation")
                 .secret("codenation@123")
-                .authorizedGrantTypes("password","username")
+                .authorizedGrantTypes("password")
                 .scopes("read","write","trust")
                 .accessTokenValiditySeconds(85759);
     }

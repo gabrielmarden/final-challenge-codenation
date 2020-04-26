@@ -6,7 +6,6 @@ import br.codenation.projectfinal.util.FormatAndConvertDateToString;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class EventoDTO{
 
     private Long id;

@@ -3,6 +3,7 @@ package br.codenation.projectfinal.endpoint;
 import br.codenation.projectfinal.dto.EventoDTO;
 import br.codenation.projectfinal.dto.LevelDTO;
 import br.codenation.projectfinal.dto.LogDTO;
+import br.codenation.projectfinal.error.ResourceNotFound;
 import br.codenation.projectfinal.model.Evento;
 import br.codenation.projectfinal.service.EventoService;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +25,8 @@ public class EventoController {
     @GetMapping(value = "/evento/{id}")
     @ApiOperation(value = "Retorna o evento com o id")
     public ResponseEntity<LogDTO> getEventosById(@PathVariable("id") Long id){
-        Evento evento = eventoService.findById(id);
+        Evento evento = eventoService.findById(id)
+                .orElseThrow(()-> new ResourceNotFound("Evento com id "+ id +" não foi encontrado!"));
 
         return new ResponseEntity<>(new LogDTO(evento),HttpStatus.OK);
     }
@@ -46,6 +48,7 @@ public class EventoController {
     public ResponseEntity<LevelDTO> getEventosByLevel(@PathVariable("type") String type){
 
         List<Evento> eventos = eventoService.findByLevel(type);
+
         LevelDTO levelDTO = new LevelDTO(eventos,type.toUpperCase(),eventos.size());
 
         return new ResponseEntity<>(levelDTO, HttpStatus.OK);

@@ -5,6 +5,7 @@ import br.codenation.projectfinal.model.Evento;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface EventoService {
@@ -17,7 +18,7 @@ public interface EventoService {
 
     List<Evento> findAll(String attribute);
 
-    Evento findById(Long id);
+    Optional<Evento> findById(Long id);
 
     List<Evento> findByLevel(String level);
 

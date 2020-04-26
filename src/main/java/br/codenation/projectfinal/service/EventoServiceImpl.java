@@ -47,8 +47,8 @@ public class EventoServiceImpl implements EventoService {
     }
 
     @Override
-    public Evento findById(Long id) {
-        return eventoRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+    public Optional<Evento> findById(Long id) {
+        return eventoRepository.findById(id);
     }
 
     @Override
