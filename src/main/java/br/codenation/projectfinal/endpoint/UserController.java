@@ -3,6 +3,7 @@ package br.codenation.projectfinal.endpoint;
 import br.codenation.projectfinal.model.User;
 import br.codenation.projectfinal.service.UserServiceImpl;
 import br.codenation.projectfinal.util.FormatAndConvertDateToString;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +22,13 @@ public class UserController {
     private UserServiceImpl userService;
 
     @GetMapping("/user/{id}")
+    @ApiOperation(value = "Retorna o User pelo id")
     public User findById(@PathVariable Long id) {
         return userService.findById(id).orElse(null);
     }
 
     @GetMapping("/user")
+    @ApiOperation(value = "Retorna todos os objetos User")
     public List<User> findAll() {
         return userService.findAll();
     }
