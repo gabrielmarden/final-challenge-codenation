@@ -22,13 +22,13 @@ public class UserController {
     private UserServiceImpl userService;
 
     @GetMapping("/user/{id}")
-    @ApiOperation(value = "Retorna o User pelo id")
+    @ApiOperation(value = "Returns user by ID")
     public User findById(@PathVariable Long id) {
         return userService.findById(id).orElse(null);
     }
 
     @GetMapping("/user")
-    @ApiOperation(value = "Retorna todos os objetos User")
+    @ApiOperation(value = "Returns all users")
     public List<User> findAll() {
         return userService.findAll();
     }

@@ -1,7 +1,7 @@
 package br.codenation.projectfinal.dto;
 
 
-import br.codenation.projectfinal.model.Evento;
+import br.codenation.projectfinal.model.Event;
 
 import java.util.List;
 
@@ -9,12 +9,12 @@ public class LevelDTO {
 
     private String level;
     private Integer quantity;
-    private List<EventoDTO> eventos;
+    private List<EventDTO> events;
 
-    public LevelDTO(List<Evento> eventos, String level, Integer quantity){
+    public LevelDTO(List<Event> events, String level, Integer quantity){
         this.level = level;
         this.quantity=quantity;
-        this.eventos = EventoDTO.listEventosDTO(eventos);
+        this.events = EventDTO.listEventosDTO(events);
     }
 
     public String getLevel() {
@@ -33,11 +33,11 @@ public class LevelDTO {
         this.quantity = quantityOfLevel;
     }
 
-    public List<EventoDTO> getEventos() {
-        return eventos;
+    public List<EventDTO> getEvents() {
+        return events;
     }
 
-    public void setEventos(List<EventoDTO> eventos) {
-        this.eventos = eventos;
+    public void setEvents(List<EventDTO> events) {
+        this.events = events;
     }
 }

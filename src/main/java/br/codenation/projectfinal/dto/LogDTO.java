@@ -1,14 +1,14 @@
 package br.codenation.projectfinal.dto;
 
-import br.codenation.projectfinal.model.Evento;
+import br.codenation.projectfinal.model.Event;
 
 public class LogDTO {
 
     private String log;
     private String level;
 
-    public LogDTO(Evento evento){
-        this.log = evento.getLogDeEvento();
+    public LogDTO(Event evento){
+        this.log = evento.getLog();
         this.level = evento.getLevel();
     }
 

@@ -40,7 +40,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
                 .title("Central de Logs API")
-                .description("\"Documentação para o consumo da API\"")
+                .description("\"API documentation\"")
                 .version("1.0.0")
                 .contact(new Contact("Marden Rocha","https://github.com/gabrielmarden","mardenbiel@gmail.com"))
                 .license("Apache License Version 2.0")
