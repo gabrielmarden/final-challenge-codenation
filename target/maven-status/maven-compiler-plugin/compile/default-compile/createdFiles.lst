@@ -7,6 +7,7 @@ br\codenation\projectfinal\service\UserService.class
 br\codenation\projectfinal\config\ResourceServerConfig.class
 br\codenation\projectfinal\swagger\SwaggerConfig.class
 br\codenation\projectfinal\endpoint\UserController.class
+br\codenation\projectfinal\service\AuditorService.class
 br\codenation\projectfinal\config\WebSecurityConfigAdapter.class
 br\codenation\projectfinal\service\EventoServiceImpl.class
 br\codenation\projectfinal\dto\LogDTO.class

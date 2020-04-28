@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -29,7 +30,7 @@ public class Evento {
     @Column(name="log_de_evento")
     private String logDeEvento;
 
-    @NotEmpty
+    @CreatedBy
     private String origem;
 
     @Column(name="created_at")
@@ -38,5 +39,6 @@ public class Evento {
     private Date createdAt;
 
     private String level;
+
 
 }
