@@ -16,7 +16,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .configurationSource(request->new CorsConfiguration().applyPermitDefaultValues())
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/user").authenticated()
-                .antMatchers(HttpMethod.GET,"/event").authenticated();
+                .anyRequest()
+                .authenticated();
     }
 }
