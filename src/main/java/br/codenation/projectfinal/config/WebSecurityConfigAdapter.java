@@ -1,6 +1,7 @@
 package br.codenation.projectfinal.config;
 
 import br.codenation.projectfinal.dto.UserDTO;
+import br.codenation.projectfinal.error.ValidationError;
 import br.codenation.projectfinal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
