@@ -1,5 +1,6 @@
 package br.codenation.projectfinal.service;
 
+import br.codenation.projectfinal.error.ResourceNotFound;
 import br.codenation.projectfinal.model.User;
 import br.codenation.projectfinal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class UserServiceImpl implements UserService {
         u.setCreatedAt(Calendar.getInstance().getTime());
 
         return u;
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
     }
 }

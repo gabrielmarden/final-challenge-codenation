@@ -1,5 +1,7 @@
 package br.codenation.projectfinal.endpoint;
 
+import br.codenation.projectfinal.dto.UserDetailsDTO;
+import br.codenation.projectfinal.error.ResourceNotFound;
 import br.codenation.projectfinal.model.User;
 import br.codenation.projectfinal.service.UserServiceImpl;
 import br.codenation.projectfinal.util.FormatAndConvertDateToString;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @RestController
@@ -23,20 +26,31 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     @ApiOperation(value = "Returns user by ID")
-    public User findById(@PathVariable Long id) {
-        return userService.findById(id).orElse(null);
+    public UserDetailsDTO findById(@PathVariable("id") Long id) {
+        User user = userService.findById(id).orElseThrow(()->new ResourceNotFound("User ID"+ id+ " not found"));
+        return new UserDetailsDTO(user);
     }
 
     @GetMapping("/user")
     @ApiOperation(value = "Returns all users")
-    public List<User> findAll() {
-        return userService.findAll();
+    public List<UserDetailsDTO> findAll() {
+        List<User> users =  userService.findAll();
+        return UserDetailsDTO.AsList(users);
     }
 
-    /*@PostMapping("/user")
-    public ResponseEntity<User> save(@Valid @RequestBody User user){
+    @PostMapping("/user")
+    @ApiOperation(value = "Save user")
+    public ResponseEntity<UserDetailsDTO> save(@Valid @RequestBody User user){
         User userSaved = userService.save(user);
-        return new ResponseEntity<>(userSaved, HttpStatus.CREATED);
-    }*/
+        return new ResponseEntity<>(new UserDetailsDTO(userSaved), HttpStatus.CREATED);
+    }
 
+    @DeleteMapping("/user/{id}")
+    @ApiOperation(value="Delete user by id")
+    public ResponseEntity<UserDetailsDTO> delete(@PathVariable("id") Long id){
+        User userDeleted = userService.findById(id).orElseThrow(()->new ResourceNotFound("User ID "+id+" not found"));
+        userService.delete(id);
+
+        return new ResponseEntity<>(new UserDetailsDTO(userDeleted),HttpStatus.OK);
+    }
 }
