@@ -31,7 +31,7 @@ Projeto prático proposto pela **Aceleradev Codenation Java** com o intuito de t
  `mvn spring-boot:run`
 
 
-## Detalhes da Aplicação e Deploy
+## Detalhes da aplicação e deploy
 
 - O **Heroku** foi a plataforma escolhida para o deploy da aplicação. Você pode ter acesso a API pela URL: [http://central-de-logs-api.herokuapp.com/](http://central-de-logs-api.herokuapp.com/)
 
