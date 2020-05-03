@@ -51,6 +51,6 @@ Use as seguintes crendenciais para os testes:
 
 `username: usuario@mail.com`
 
-`password: 1234`
+`password: codenation`
 
 
