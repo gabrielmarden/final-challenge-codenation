@@ -37,3 +37,20 @@ Projeto prático proposto pela **Aceleradev Codenation Java** com o intuito de t
 
 - A documentação **Swagger**  com todos os detalhamentos referentes aos endpoints da API pode ser encontrada na seguinte URL: [https://central-de-logs-api.herokuapp.com/swagger-ui.html](https://central-de-logs-api.herokuapp.com/swagger-ui.html)
 
+## Testes
+
+Para a realização dos testes da API é necessário está autenticado.
+Use as seguintes crendenciais para os testes:
+
+#### Client
+`client: client-codenation`
+
+`password: codenation@123`  
+ 
+#### User
+
+`username: usuario@mail.com`
+
+`password: 1234`
+
+
