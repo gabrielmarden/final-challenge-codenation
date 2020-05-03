@@ -4,17 +4,15 @@ import br.codenation.projectfinal.dto.UserDetailsDTO;
 import br.codenation.projectfinal.error.ResourceNotFound;
 import br.codenation.projectfinal.model.User;
 import br.codenation.projectfinal.service.UserServiceImpl;
-import br.codenation.projectfinal.util.FormatAndConvertDateToString;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 
 @RestController
@@ -23,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/user/{id}")
     @ApiOperation(value = "Returns user by ID")
@@ -41,7 +42,10 @@ public class UserController {
     @PostMapping("/user")
     @ApiOperation(value = "Save user")
     public ResponseEntity<UserDetailsDTO> save(@Valid @RequestBody User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         User userSaved = userService.save(user);
+
         return new ResponseEntity<>(new UserDetailsDTO(userSaved), HttpStatus.CREATED);
     }
 

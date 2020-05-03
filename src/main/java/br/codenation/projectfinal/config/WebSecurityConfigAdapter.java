@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -25,12 +26,13 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository userRepository) throws Exception{
-        builder.userDetailsService(username -> new UserDTO(userRepository.findByEmail(username).get())).passwordEncoder(passwordEncoder());
+        builder.userDetailsService(username -> new UserDTO(userRepository.findByEmail(username).get()))
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     @Override
