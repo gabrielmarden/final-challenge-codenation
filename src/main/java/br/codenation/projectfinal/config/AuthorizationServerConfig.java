@@ -19,9 +19,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
@@ -32,7 +29,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("client-codenation")
-                .secret(passwordEncoder.encode("codenation@123"))
+                .secret("codenation@123")
                 .authorizedGrantTypes("password")
                 .scopes("read","write","trust")
                 .accessTokenValiditySeconds(85759);
