@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -46,9 +47,9 @@ public class EventController {
     @ApiOperation(value = "Returns all log events filtered by \"level\" ")
     public ResponseEntity<LevelDTO> getEventsByLevel(@PathVariable("type") String type){
 
-        List<Event> events = eventService.findByLevel(type);
+        List<Event> events = eventService.findByLevel(type.toLowerCase());
 
-        LevelDTO levelDTO = new LevelDTO(events,type.toUpperCase(),events.size());
+        LevelDTO levelDTO = new LevelDTO(events,type.toLowerCase(),events.size());
 
         return new ResponseEntity<>(levelDTO, HttpStatus.OK);
 
@@ -56,7 +57,8 @@ public class EventController {
 
     @PostMapping("/event")
     @ApiOperation(value = "Save or update a log event")
-    public ResponseEntity<EventDTO> save(@RequestBody Event event){
+    public ResponseEntity<EventDTO> save(@Valid @RequestBody Event event){
+        event.setLevel(event.getLevel().toLowerCase());
         EventDTO eventoPersisted = new EventDTO(eventService.save(event));
         return new ResponseEntity<>(eventoPersisted,HttpStatus.CREATED);
     }
