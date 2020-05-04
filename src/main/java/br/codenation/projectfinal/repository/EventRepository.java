@@ -12,7 +12,7 @@ public interface EventRepository extends JpaRepository<Event,Long> {
 
     Optional<Event> findById(Long id);
 
-    @Query(value="select e.* from evento as e where e.level = :level", nativeQuery = true)
+    @Query(value="select e.* from event as e where e.level = :level", nativeQuery = true)
     List<Event> findEventByLevel(@Param("level")String level);
 
 }
